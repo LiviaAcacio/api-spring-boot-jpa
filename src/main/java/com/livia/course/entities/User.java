@@ -4,18 +4,27 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//@Entitie define a classe como uma entidade no banco de dados
 
 @Entity
+@Table(name = "tb_user")
 public class User implements Serializable{
-	
-
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Definie o autoincrmento do id
 	private Long id;
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
 	
+	//Por causa do framework spring-boot cria-se por convenção um construtor sem argumentos.
 	public User() {}
 	
 
