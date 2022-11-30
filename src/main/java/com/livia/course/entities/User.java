@@ -1,12 +1,15 @@
 package com.livia.course.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //@Entitie define a classe como uma entidade no banco de dados
@@ -23,6 +26,9 @@ public class User implements Serializable{
 	private String email;
 	private String phone;
 	private String password;
+	
+	@OneToMany(mappedBy = "client")
+	List<Order> orders = new ArrayList<>();
 	
 	//Por causa do framework spring-boot cria-se por convenção um construtor sem argumentos.
 	public User() {}
